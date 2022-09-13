@@ -5,8 +5,8 @@ class FrozenStringReporter < Solargraph::Diagnostics::Base
     return [] if source.code.empty? || source.code.start_with?('# frozen_string_literal:')
     [
       {
-        range: Solargraph::Range.from_to(0, 0, 0, source.code.lines[0].length),
-        severity: Diagnostics::Severities::WARNING,
+        range: Solargraph::Range.from_to(0, 0, 0, source.code.lines[0].length).to_hash,
+        severity: Solargraph::Diagnostics::Severities::WARNING,
         source: 'FrozenString',
         message: 'File does not start with frozen_string_literal.'
       }
